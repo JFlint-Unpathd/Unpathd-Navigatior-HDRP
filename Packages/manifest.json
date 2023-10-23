@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.meta.xr.sdk.haptics": "file:C:/Users/maria/Downloads/com.meta.xr.sdk.haptics-1.0.0-beta.7/com.meta.xr.sdk.haptics",
     "com.unity.collab-proxy": "2.0.3",
     "com.unity.feature.development": "1.0.1",
     "com.unity.feature.vr": "1.0.0",
