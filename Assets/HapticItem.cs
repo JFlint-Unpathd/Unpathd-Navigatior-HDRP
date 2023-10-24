@@ -22,19 +22,21 @@ public class HapticItem : MonoBehaviour
         
     }
 
-    void OnCollisionEnter(Collision col) {
+//     void OnTriggerEnter(Collider col) {
 
-    if (col.gameObject.tag == "Interactable" ) 
-    {
-        activateInteractable = true;
-        Debug.Log("collision"); 
-    }
+//     if (col.gameObject.tag == "Interactable" ) 
+//     {
+//         Debug.Log("collision"); 
+//         activateInteractable = true;
+//         Debug.Log("bool set to true"); 
+//     }
 
-    else
-    {
-        activateInteractable = false;
-    }
-}
+//     else
+//     {
+//         activateInteractable = false;
+//         Debug.Log("bool set to false"); 
+//     }
+// }
 
     // This helper function allows us to identify the controller we are currently playing back on.
     // We use this further down for logging purposes.
@@ -68,7 +70,7 @@ public class HapticItem : MonoBehaviour
             }
 
             // Stop first clip when releasing the index trigger
-            if (OVRInput.GetUp(OVRInput.Button.PrimaryIndexTrigger, controller))
+            if (OVRInput.GetUp(OVRInput.Button.PrimaryIndexTrigger, controller) && activateInteractable == false)
             {
                 clipPlayer1.Stop();
                 Debug.Log("Vibration from clipPlayer1 on " + controllerName + " should stop.");
@@ -91,6 +93,11 @@ public class HapticItem : MonoBehaviour
         HandleControllerInput(OVRInput.Controller.RTouch, _playerRight1, Controller.Right);
     }
 
+    public void ActiveSelect()
+    {
+        activateInteractable = true;
+    }
+
     protected virtual void OnDestroy()
     {
         _playerLeft1.Dispose();
@@ -103,5 +110,7 @@ public class HapticItem : MonoBehaviour
     {
         Haptics.Instance.Dispose();
     }
+
+
 }
 
