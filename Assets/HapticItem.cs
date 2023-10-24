@@ -22,24 +22,19 @@ public class HapticItem : MonoBehaviour
         
     }
 
-//     void OnTriggerEnter(Collider col) {
+    public void ActiveSelect()
+    {
+        activateInteractable = true;
+        Debug.Log("activated");
+        
+    }
 
-//     if (col.gameObject.tag == "Interactable" ) 
-//     {
-//         Debug.Log("collision"); 
-//         activateInteractable = true;
-//         Debug.Log("bool set to true"); 
-//     }
-
-//     else
-//     {
-//         activateInteractable = false;
-//         Debug.Log("bool set to false"); 
-//     }
-// }
-
-    // This helper function allows us to identify the controller we are currently playing back on.
-    // We use this further down for logging purposes.
+    public void ActiveDeselect()
+    {
+        activateInteractable = false;
+        Debug.Log("deactivated");
+    }
+    
     String GetControllerName(OVRInput.Controller controller)
     {
         if (controller == OVRInput.Controller.LTouch)
@@ -93,10 +88,8 @@ public class HapticItem : MonoBehaviour
         HandleControllerInput(OVRInput.Controller.RTouch, _playerRight1, Controller.Right);
     }
 
-    public void ActiveSelect()
-    {
-        activateInteractable = true;
-    }
+    
+    
 
     protected virtual void OnDestroy()
     {
